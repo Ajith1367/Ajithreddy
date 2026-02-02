@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine's Question</title>
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        font-family: 'Arial', sans-serif;
+        background: #ffe6e6;
+        text-align: center;
+    }
+    h1 {
+        color: #e60073;
+        font-size: 2.5em;
+    }
+    .btn {
+        padding: 15px 30px;
+        font-size: 1.3em;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 10px;
+    }
+    #yesBtn {
+        background: #ff3385;
+        color: white;
+    }
+    #noBtn {
+        background: #ccc;
+        color: black;
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+    <h1>Will you be my Valentine neha? 💘</h1>
+    <button id="yesBtn" class="btn">Yes! 💕</button>
+    <button id="noBtn" class="btn">No 😢</button>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    document.body.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+
+        // Randomly move the No button if cursor gets near
+        const distX = Math.abs(x - noBtn.offsetLeft);
+        const distY = Math.abs(y - noBtn.offsetTop);
+        if (distX < 100 && distY < 50) {
+            const newX = Math.random() * (window.innerWidth - noBtn.clientWidth);
+            const newY = Math.random() * (window.innerHeight - noBtn.clientHeight);
+            noBtn.style.left = newX + "px";
+            noBtn.style.top = newY + "px";
+        }
+    });
+
+    document.getElementById("yesBtn").addEventListener("click", () => {
+        alert("Yay! 💖 Thank you! 😍");
+    });
+</script>
+</body>
+</html>
